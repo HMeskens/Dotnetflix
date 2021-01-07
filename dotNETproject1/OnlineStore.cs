@@ -63,10 +63,6 @@ namespace dotNETproject1
             Console.WriteLine("Our movies: ");
             ShowMovieCatalog();
             WriteOrderToFile();
-
-            //Movie selectedMovie = SelectAMovie();
-            //MoviesInTheCart.Add(selectedMovie);
-            //SelectMoreMovies();
         }
 
         private void ShowMovieCatalog()
