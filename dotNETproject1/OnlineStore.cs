@@ -15,8 +15,6 @@ namespace dotNETproject1
 
         private const string ACCOUNTPATH = @"C:\Dev\Customers.txt";
 
-        private List<Movie> MoviesInTheCart = new List<Movie>();
-
         public void MainMenu()
         {
             Console.WriteLine("-------DOTNET-FLIX--------");
@@ -63,7 +61,7 @@ namespace dotNETproject1
 
         //Order content
 
-        public void OrderMenu()
+        private void OrderMenu()
         {
             Console.Clear();
             Console.WriteLine("Our movies: ");
@@ -75,7 +73,7 @@ namespace dotNETproject1
             //SelectMoreMovies();
         }
 
-        public void ShowMovieCatalog()
+        private void ShowMovieCatalog()
         {
             CreateMovieCatalog();
             PrintMovieCatalog();
@@ -127,7 +125,7 @@ namespace dotNETproject1
         }
 
         //Admin content
-        public void AddingMoviesMenu()
+        private void AddingMoviesMenu()
         {
             Console.Clear();
             Movie movie = CreateMovie();
@@ -135,14 +133,14 @@ namespace dotNETproject1
             AddMoreMovies();
         }
 
-        public void MoviesOverview()
+        private void MoviesOverview()
         {
             Console.Clear();
             Console.WriteLine("------Our Movies------");
             ShowMovieCatalog();
         }
 
-        public void AddMoreMovies()
+        private void AddMoreMovies()
         {
             Console.WriteLine("Press E for a new movie, or press B to go Back to main menu");
             string inputUser = Console.ReadLine();
@@ -166,14 +164,14 @@ namespace dotNETproject1
             }
         }
 
-        public void AddMovieToFile(Movie movie)
+        private void AddMovieToFile(Movie movie)
         {
             string line = ($" { movie.Id },{ movie.Name },{ movie.Genre },{ movie.Duration },{ movie.Price },{ movie.YearOfProduction }");
             FileManager fileManager = new FileManager();
             fileManager.WriteDataToFile(line, PATH);
         }
 
-        public Movie CreateMovie()
+        private Movie CreateMovie()
         {
             Console.WriteLine("Please give the details of the movie:");
             Console.Write("Name: ");
@@ -192,7 +190,7 @@ namespace dotNETproject1
             return myMovie;
         }
 
-        public decimal IsItADecimal(string inputPricetemp)
+        private decimal IsItADecimal(string inputPricetemp)
         {
             decimal inputPrice;
             if (!decimal.TryParse(inputPricetemp, out inputPrice))
@@ -209,7 +207,7 @@ namespace dotNETproject1
             return inputPrice;
         }
 
-        public int IsItAnInteger(string inputDurationtemp)
+        private int IsItAnInteger(string inputDurationtemp)
         {
             int inputDuration;
             if (!int.TryParse(inputDurationtemp, out inputDuration))
@@ -228,7 +226,7 @@ namespace dotNETproject1
         }
 
         //Modify content -- MORE TO DO HERE
-        public void ModifyFile()
+        private void ModifyFile()
         {
             Console.WriteLine($"Which movie do you want to modify?");
             string userinput = Console.ReadLine();
@@ -266,7 +264,7 @@ namespace dotNETproject1
             }
         }
 
-        public List<Movie> RemoveMovie(int id)
+        private List<Movie> RemoveMovie(int id)
         {
             //remove the selected movie from the list 
             List<Movie> movies = CreateMovieCatalog();
@@ -274,7 +272,7 @@ namespace dotNETproject1
             return movies;
         }
 
-        public void PrintUpdatedMovieCatalog(List<Movie> movies)
+        private void PrintUpdatedMovieCatalog(List<Movie> movies)
         {
             foreach (Movie movie in movies)
             {
@@ -282,10 +280,8 @@ namespace dotNETproject1
             }
         }
 
-
-
         //General content
-        public void ErrorMessage(string errorInfo, int sleepTimer)
+        private void ErrorMessage(string errorInfo, int sleepTimer)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{errorInfo}");
@@ -293,7 +289,7 @@ namespace dotNETproject1
             Console.ResetColor();
         }
 
-        public void CreateOrder(Order order)
+        private void CreateOrder(Order order)
         {
             //string line = ($" { movie.Id },{ movie.Name },{ movie.Genre },{ movie.Duration },{ movie.Price },{ movie.YearOfProduction }");
             FileManager fileManager = new FileManager();
@@ -301,13 +297,13 @@ namespace dotNETproject1
             fileManager.WriteDataToFile(line, ORDERPATH);
         }
 
-        public void WriteOrderToFile()
+        private void WriteOrderToFile()
         {
             Order order = PickAMovie();
             CreateOrder(order);
         }
 
-        public void MakeAnAccount()
+        private void MakeAnAccount()
         {
             Customer customer = AccountMenu();
             WriteAccountToFile(customer);
@@ -328,14 +324,14 @@ namespace dotNETproject1
             }
         }
 
-        public void WriteAccountToFile(Customer customer)
+        private void WriteAccountToFile(Customer customer)
         {
             FileManager fileManager = new FileManager();
             string line = ($"{customer.CustomerId}, {customer.CustomerName}, {customer.YearOfBirth}, {customer.Gender}, {customer.BillingAddress}, {customer.EMail} ");
             fileManager.WriteDataToFile(line, ACCOUNTPATH);
         }
 
-        public Customer AccountMenu()
+        private Customer AccountMenu()
         {
             Console.Write("Fill in your name: ");
             string customerName = Console.ReadLine();
@@ -351,7 +347,7 @@ namespace dotNETproject1
             return customer;
         }
 
-        public Order PickAMovie()
+        private Order PickAMovie()
         {
             Console.WriteLine("Pick up a movie? (Press E to exit.)");
             string userinput = Console.ReadLine();
@@ -388,23 +384,5 @@ namespace dotNETproject1
             return order;
         }
 
-        //private Movie ChangePrice(Movie movie)
-        //{
-        //    Console.WriteLine("Give new price: ");
-        //    decimal newPrice = decimal.Parse(Console.ReadLine());
-        //    movie.Price = newPrice;
-        //    return movie;
-        //}
-
-        //public void ReplaceItemInAList(List<Movie> movies, Movie movie)
-        //{
-        //    Movie movie1 = ChangePrice(movie);
-        //    movies[movies.FindIndex(ind => ind.Equals(movie.Id-1))] = movie1;
-        //    foreach (var item in movies)
-        //    {
-        //        Console.WriteLine($"{item.Price}");
-        //    }
-
-        //}
     }
 }
