@@ -341,8 +341,8 @@ namespace dotNETproject1
             string customerName = Console.ReadLine();
             Console.Write("Fill in your Year of Birth: ");
             int yearOfBirth = int.Parse(Console.ReadLine());
-            Console.Write("Fill in your gender: ");
-            string gender = Console.ReadLine();
+            Console.Write("Fill in your gender: (male/female)"); 
+            Gender gender = (Gender)Enum.Parse(typeof(Gender), Console.ReadLine());
             Console.Write("Fill in your billing address: ");
             string billingAddress = Console.ReadLine();
             Console.Write("Fill in your e-mail: ");
@@ -387,9 +387,6 @@ namespace dotNETproject1
 
             return order;
         }
-
-
-
 
         //private Movie ChangePrice(Movie movie)
         //{
