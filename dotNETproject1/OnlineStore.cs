@@ -274,7 +274,6 @@ namespace dotNETproject1
 
         private void CreateOrder(Order order)
         {
-            //string line = ($" { movie.Id },{ movie.Name },{ movie.Genre },{ movie.Duration },{ movie.Price },{ movie.YearOfProduction }");
             FileManager fileManager = new FileManager();
             string line = ($"{order.ID}, {order.OrderTime}, {order.OrderedItemID}, {order.TotalPrice} ");
             fileManager.WriteDataToFile(line, ORDERPATH);
