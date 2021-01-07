@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace dotNETproject1
+﻿namespace dotNETproject1
 {
     internal class Movie
     {
@@ -41,4 +37,3 @@ namespace dotNETproject1
         }
     }
 }
-

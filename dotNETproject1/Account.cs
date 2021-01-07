@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace dotNETproject1
+﻿namespace dotNETproject1
 {
-    enum Gender { male, female}
+    internal enum Gender
+    { male, female }
 
     internal class Customer
     {

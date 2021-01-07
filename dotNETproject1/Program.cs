@@ -8,7 +8,6 @@ namespace dotNETproject1
         {
             OnlineStore onlineStore = new OnlineStore();
             onlineStore.MainMenu();
-
             Console.ReadLine();
         }
     }

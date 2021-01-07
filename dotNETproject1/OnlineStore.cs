@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using System.Threading;
-using System.Linq;
 
 namespace dotNETproject1
 {
@@ -58,8 +56,6 @@ namespace dotNETproject1
                     break;
             }
         }
-
-        //Order content
 
         private void OrderMenu()
         {
@@ -124,7 +120,6 @@ namespace dotNETproject1
             }
         }
 
-        //Admin content
         private void AddingMoviesMenu()
         {
             Console.Clear();
@@ -222,7 +217,6 @@ namespace dotNETproject1
             }
 
             return inputDuration;
-
         }
 
         //Modify content -- MORE TO DO HERE
@@ -247,17 +241,19 @@ namespace dotNETproject1
                             List<Movie> updatedMovies = RemoveMovie(movie.Id);
                             PrintUpdatedMovieCatalog(updatedMovies);
                             break;
+
                         case "B":
                             //ReplaceItemInAList(movies, movie);
                             break;
+
                         case "C":
                             MainMenu();
                             break;
+
                         default:
                             ErrorMessage("Give a correct input", 1000);
                             ModifyFile();
 
-                            
                             break;
                     }
                 }
@@ -266,7 +262,7 @@ namespace dotNETproject1
 
         private List<Movie> RemoveMovie(int id)
         {
-            //remove the selected movie from the list 
+            //remove the selected movie from the list
             List<Movie> movies = CreateMovieCatalog();
             movies.RemoveAll(x => x.Id == id);
             return movies;
@@ -278,15 +274,6 @@ namespace dotNETproject1
             {
                 Console.WriteLine($"{movie.Name}");
             }
-        }
-
-        //General content
-        private void ErrorMessage(string errorInfo, int sleepTimer)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{errorInfo}");
-            Thread.Sleep(sleepTimer);
-            Console.ResetColor();
         }
 
         private void CreateOrder(Order order)
@@ -337,7 +324,7 @@ namespace dotNETproject1
             string customerName = Console.ReadLine();
             Console.Write("Fill in your Year of Birth: ");
             int yearOfBirth = int.Parse(Console.ReadLine());
-            Console.Write("Fill in your gender: (male/female)"); 
+            Console.Write("Fill in your gender: (male/female)");
             Gender gender = (Gender)Enum.Parse(typeof(Gender), Console.ReadLine());
             Console.Write("Fill in your billing address: ");
             string billingAddress = Console.ReadLine();
@@ -360,7 +347,6 @@ namespace dotNETproject1
                     Console.Clear();
                     MainMenu();
                 }
-
                 else if (int.Parse(userinput) == movie.Id)
                 {
                     Console.WriteLine($"This is Your Order: ");
@@ -372,7 +358,6 @@ namespace dotNETproject1
                     Console.WriteLine($"Total price to pay: {movie.Price}");
                     order = new Order(movie.Id, movie.Price);
                 }
-
                 else
                 {
                     ErrorMessage("Give a correct input", 1000);
@@ -384,5 +369,12 @@ namespace dotNETproject1
             return order;
         }
 
+        private void ErrorMessage(string errorInfo, int sleepTimer)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{errorInfo}");
+            Thread.Sleep(sleepTimer);
+            Console.ResetColor();
+        }
     }
 }

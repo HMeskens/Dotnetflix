@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace dotNETproject1
 {
     internal class FileManager
     {
-
-
         public void WriteDataToFile(string textToWriteFile, string path)
         {
             using StreamWriter write = new StreamWriter(path, true);
