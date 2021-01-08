@@ -162,6 +162,17 @@ namespace dotNETproject1
             fileManager.WriteDataToFile(line, PATH);
         }
 
+        private void AddMovieListToFile(List<Movie> movies)
+        {
+             
+            foreach (var movie in movies)
+            {
+                string line = ($" { movie.Id },{ movie.Name },{ movie.Genre },{ movie.Duration },{ movie.Price },{ movie.YearOfProduction }");
+                FileManager fileManager = new FileManager();
+                fileManager.WriteDataToFile(line, PATH);
+            }
+        }
+
         private Movie CreateMovie()
         {
             Console.WriteLine("Please give the details of the movie:");
@@ -234,12 +245,11 @@ namespace dotNETproject1
                     switch (userinput1)
                     {
                         case "A":
-                            List<Movie> updatedMovies = RemoveMovie(movie.Id);
-                            PrintUpdatedMovieCatalog(updatedMovies);
+                            DeleteMovie();
                             break;
 
                         case "B":
-                            //ReplaceItemInAList(movies, movie);
+                            //ReplaceItemInAList(movie);
                             break;
 
                         case "C":
@@ -256,6 +266,13 @@ namespace dotNETproject1
             }
         }
 
+        private void DeleteMovie()
+        {
+            List<Movie> updatedMovies = RemoveMovie(movie.Id);
+            PrintUpdatedMovieCatalog(updatedMovies);
+            FileManager fileManager = new FileManager();
+            fileManager.DeleteFile(PATH);
+        }
         private List<Movie> RemoveMovie(int id)
         {
             //remove the selected movie from the list

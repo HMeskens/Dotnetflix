@@ -24,5 +24,13 @@ namespace dotNETproject1
             }
             return lines;
         }
+
+        public void DeleteFile(string file)
+        {
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
+        }
     }
 }
